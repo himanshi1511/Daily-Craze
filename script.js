@@ -1,5 +1,4 @@
 let key = '0a70cc05ea344d5bb33fcd2a5927e460';
-
 let cardData = document.querySelector(".cardData");
 //fetch function is used to fetch data from any api
 //async await will wait till we not get data
