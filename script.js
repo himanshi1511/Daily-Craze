@@ -12,11 +12,13 @@ let getData = async (input) => {
     https://newsapi.org/v2/everything?q=${input}&apiKey=${key}`);
   let jsonData = await res.json();
 
-//   console.log(jsonData);
+  console.log(jsonData);
+
 searchType.innerHTML = "Search : " + input;
 inputData.value = "";
 cardData.innerHTML="";
 
+if(jsonData.articles){
   jsonData.articles.forEach(function(article){
     console.log(article);
 
@@ -33,15 +35,19 @@ cardData.innerHTML="";
     divs.addEventListener("click" , function(){
         window.open(article.url);
     })
-  })
+  });
+}else{
+  console.error("no article exists" , jsonData);
+}
+
  
 };
 
 window.addEventListener("load" , function(){
-    getData("India")
+    getData("India");
 })
 
-window.
+
 
 
 SearchBtn.addEventListener("click" , function(){
