@@ -1,4 +1,5 @@
 let key = '0a70cc05ea344d5bb33fcd2a5927e460';
+
 let cardData = document.querySelector(".cardData");
 //fetch function is used to fetch data from any api
 //async await will wait till we not get data
@@ -6,15 +7,10 @@ let cardData = document.querySelector(".cardData");
 let SearchBtn = document.getElementById("searchBtn");
 let inputData = document.getElementById("inputData");
 let searchType = document.getElementById("type");
-
-const BACKEND_URL = 'https://daily-craze-git-main-himanshis-projects-a21467d4.vercel.app/';
-
 let getData = async (input) => {
-  try{
-    let res  = await fetch(`${BACKEND_URL}?q=${input}`);
-    let jsonData = await res.json();
-  
-
+  let res = await fetch(`
+    https://newsapi.org/v2/everything?q=${input}&apiKey=${key}`);
+  let jsonData = await res.json();
 
 //   console.log(jsonData);
 searchType.innerHTML = "Search : " + input;
@@ -36,11 +32,9 @@ cardData.innerHTML="";
 
     divs.addEventListener("click" , function(){
         window.open(article.url);
-    });
-  });
-} catch(error){
-  console.error("Error in fetching the data" , error);
-}
+    })
+  })
+ 
 };
 
 window.addEventListener("load" , function(){
